@@ -390,25 +390,82 @@ function initChenabViewer() {
     scene.add(gridHelper);
 
     // ----- View mode switching -----
+    let currentViewMode = 'realistic';   // Track active mode for animation loop
+
     const viewButtons = document.querySelectorAll('.viewer-btn');
     viewButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Toggle active class
             viewButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            const mode = btn.dataset.view;
-            applyViewMode(mode, bridgeData, scene, gridHelper);
+            currentViewMode = btn.dataset.view;
+            applyViewMode(currentViewMode, bridgeData, scene, gridHelper);
         });
     });
 
     // Start in Realistic mode
     applyViewMode('realistic', bridgeData, scene, gridHelper);
 
+    // ----- Stress Map — Moving Load Animation -----
+    // Simulates a train traversing the bridge from left to right.
+    // Members near the virtual train glow red; far members stay cyan.
+    const span = 180;                        // must match buildChenabArch
+    let stressTrainPos = -span;              // current x-position of virtual load
+    const stressTrainSpeed = 1.2;            // units per frame
+    const stressSigma = 3500;                // Gaussian spread (higher = wider glow)
+
+    /**
+     * updateStressColors — Recalculates vertex colors each frame
+     * based on proximity to the moving point mass (stressTrainPos).
+     */
+    function updateStressColors() {
+        const posAttr = bridgeData.trussGeo.getAttribute('position');
+        const colorAttr = bridgeData.trussGeo.getAttribute('color');
+        if (!posAttr || !colorAttr) return;
+
+        const count = posAttr.count;
+        for (let i = 0; i < count; i++) {
+            const px = posAttr.getX(i);
+            const py = posAttr.getY(i);
+
+            // Distance from the moving load (only horizontal x matters most)
+            const dx = px - stressTrainPos;
+            const dist2 = dx * dx;
+
+            // Gaussian proximity factor: 1.0 = directly under load, 0.0 = far away
+            const proximity = Math.exp(-dist2 / stressSigma);
+
+            // Height factor: lower members carry more load
+            const heightFactor = 1.0 - Math.min(1, py / 105);
+
+            // Combined intensity: red when loaded, cyan when unloaded
+            const intensity = Math.min(1, proximity * 1.5 + heightFactor * 0.3);
+
+            // Interpolate: Deep Red (0.94, 0.27, 0.27) ↔ Cool Cyan (0.02, 0.71, 0.83)
+            const r = 0.02 + 0.92 * intensity;
+            const g = 0.71 - 0.44 * intensity;
+            const b = 0.83 - 0.56 * intensity;
+
+            colorAttr.setXYZ(i, r, g, b);
+        }
+        colorAttr.needsUpdate = true;
+    }
+
     // ----- Animation Loop -----
     function animate() {
         requestAnimationFrame(animate);
         if (controls) controls.update();
+
+        // When in stress mode, animate the moving load
+        if (currentViewMode === 'stress') {
+            stressTrainPos += stressTrainSpeed;
+            // Loop back to left side when train passes the right end
+            if (stressTrainPos > span) {
+                stressTrainPos = -span;
+            }
+            updateStressColors();
+        }
+
         renderer.render(scene, camera);
     }
     animate();
@@ -585,195 +642,18 @@ function applyViewMode(mode, bridgeData, scene, gridHelper) {
 
 
 /* -------------------------------------------------------
-   5. MODAL SYSTEM — Dynamic data-driven project modal +
-   generic open/close for Resume & Chenab modals.
+   5. MODAL SYSTEM — Generic open/close for all modals.
+   Uses [data-open] / [data-close] attributes on buttons.
+   All modals (flood, drainage, resume, chenab) use the
+   same mechanism. To disable any modal, comment out the
+   classList.add('open') call without breaking the site.
    ------------------------------------------------------- */
 
-/**
- * PROJECT_DATA — Each key matches a data-project-id value on
- * the project card buttons. JS reads this to populate the
- * single #modal-project modal dynamically.
- *
- * PLACEHOLDER: Update the images and pdfUrl values with your
- * actual file paths once you have the assets.
- *   images: ["assets/flood-img-1.jpg", "assets/flood-img-2.jpg", ...]
- *   pdfUrl: "assets/flood-report.pdf"
- */
-const PROJECT_DATA = {
-    flood: {
-        title: 'Flood Mapping using AI/ML',
-        org: 'India Space Academy Internship',
-        bodyHTML: `
-            <p>This project utilizes satellite-derived geospatial data, specifically Sentinel-1 SAR imagery
-            and Sentinel-2 optical bands, to identify and delineate flood-affected areas. A supervised machine
-            learning pipeline, including Random Forest and Support Vector Machine classifiers, is trained on
-            labeled water/non-water pixels to generate high-resolution flood extent maps.</p>
-            <p>The output maps are validated against ground-truth data and integrated into a GIS dashboard for
-            rapid disaster response planning. This work was carried out during the India Space Academy
-            internship program.</p>
-        `,
-        // PLACEHOLDER: Replace these with actual image paths, e.g. "assets/flood-map-1.png"
-        images: [
-            { src: '', alt: 'Flood Map Output 1' },
-            { src: '', alt: 'Flood Map Analysis 2' },
-            { src: '', alt: 'GIS Dashboard View 3' }
-        ],
-        // PLACEHOLDER: Replace with actual PDF path, e.g. "assets/flood-mapping-report.pdf"
-        pdfUrl: ''
-    },
-
-    bim: {
-        title: 'Commercial Office Building in BIM Environment',
-        org: "SIH '25 Event",
-        bodyHTML: `
-            <p>A comprehensive Building Information Modeling (BIM) project involving the design, analysis,
-            and virtual construction of a multi-storey commercial office building. The model integrates
-            architectural, structural, and MEP disciplines within a collaborative BIM workflow.</p>
-            <p>Key deliverables include clash detection reports, 4D construction scheduling, and quantity
-            take-off analysis — all produced within Autodesk Revit and Navisworks environments.</p>
-        `,
-        // PLACEHOLDER: Replace with actual BIM screenshots/renders, e.g. "assets/bim-render-1.png"
-        images: [
-            { src: '', alt: 'BIM 3D Model View 1' },
-            { src: '', alt: 'Clash Detection Report 2' },
-            { src: '', alt: 'Construction Schedule 3' }
-        ],
-        // PLACEHOLDER: Replace with actual PDF path, e.g. "assets/bim-project-report.pdf"
-        pdfUrl: ''
-    },
-
-    drainage: {
-        title: 'Smart Drainage & Flood Management',
-        org: 'NIT Agartala Event',
-        bodyHTML: `
-            <h3>Planning &amp; Design</h3>
-            <p>This system integrates IoT water-level sensors with real-time weather API data to predict
-            urban flood bottlenecks before they occur. The core design features an automated sluice gate
-            control mechanism powered by a localized AI predictive model. By analyzing rainfall intensity
-            and current drainage capacity, the system optimizes the flow of water out of critical city
-            zones, preventing infrastructure damage during peak monsoon events.</p>
-        `,
-        // PLACEHOLDER: Replace with actual system diagrams, e.g. "assets/drainage-arch-1.png"
-        images: [
-            { src: '', alt: 'IoT Sensor Layout 1' },
-            { src: '', alt: 'System Architecture 2' },
-            { src: '', alt: 'Flood Prediction Dashboard 3' }
-        ],
-        // PLACEHOLDER: Replace with actual PDF path, e.g. "assets/drainage-report.pdf"
-        pdfUrl: ''
-    },
-
-    portfolio: {
-        title: 'Cinematic 3D Engineering Portfolio',
-        org: 'Personal Project — Vibe Coding',
-        bodyHTML: `
-            <p>A high-performance digital twin portfolio built using <strong>'vibe coding'</strong> with AI
-            assistance (Antigravity). The site features custom Three.js structural rendering of the Chenab
-            Bridge with stress-map, blueprint, and realistic view modes — all rendered in real-time.</p>
-            <p>Key technologies: Three.js for 3D geometry and vertex-colored stress analysis, GSAP with
-            ScrollTrigger for cinematic section reveals, and glassmorphism CSS for a dark futuristic aesthetic.
-            The entire build was orchestrated through natural-language prompts, proving that AI-assisted
-            'vibe coding' can produce production-ready, visually premium web applications.</p>
-        `,
-        // PLACEHOLDER: Replace with actual portfolio screenshots, e.g. "assets/portfolio-hero.png"
-        images: [
-            { src: '', alt: 'Portfolio Hero Section' },
-            { src: '', alt: '3D Bridge Viewer' },
-            { src: '', alt: 'Technical Analysis View' }
-        ],
-        // PLACEHOLDER: Replace with actual PDF path, e.g. "assets/portfolio-case-study.pdf"
-        pdfUrl: ''
-    }
-};
-
-
 function initModals() {
-    // =====================================================
-    // A. DYNAMIC PROJECT MODAL — data-driven injection
-    // =====================================================
-    const projectModal = document.getElementById('modal-project');
-    const projectTitle = document.getElementById('modal-project-title');
-    const projectOrg = document.getElementById('modal-project-org');
-    const projectBody = document.getElementById('modal-project-body');
-    const projectGallery = document.getElementById('modal-project-gallery');
-    const projectPdf = document.getElementById('modal-project-pdf');
-    const projectPdfDl = document.getElementById('modal-project-pdf-download');
-    const projectPdfSect = document.getElementById('modal-project-pdf-section');
-    const projectCloseBtn = document.getElementById('modal-project-close');
-
-    /**
-     * openProjectModal — Populates and opens the dynamic project modal.
-     * @param {string} projectId — key into PROJECT_DATA (e.g. "flood")
-     */
-    function openProjectModal(projectId) {
-        const data = PROJECT_DATA[projectId];
-        if (!data || !projectModal) return;
-
-        // Inject title & org
-        projectTitle.textContent = data.title;
-        projectOrg.textContent = data.org;
-
-        // Inject body HTML (case study text)
-        projectBody.innerHTML = data.bodyHTML;
-
-        // ----- Build image gallery -----
-        projectGallery.innerHTML = '';
-        if (data.images && data.images.length > 0) {
-            data.images.forEach((img, index) => {
-                if (img.src) {
-                    // Real image — render as <img>
-                    const imgEl = document.createElement('img');
-                    imgEl.src = img.src;
-                    imgEl.alt = img.alt || 'Project image ' + (index + 1);
-                    imgEl.loading = 'lazy';
-                    projectGallery.appendChild(imgEl);
-                } else {
-                    // PLACEHOLDER: No src yet, show dashed placeholder card
-                    const placeholder = document.createElement('div');
-                    placeholder.className = 'gallery-placeholder';
-                    placeholder.textContent = img.alt || 'Image ' + (index + 1);
-                    projectGallery.appendChild(placeholder);
-                }
-            });
-        }
-
-        // ----- Set up PDF viewer -----
-        if (data.pdfUrl) {
-            // Show PDF section with the real PDF
-            projectPdfSect.style.display = 'flex';
-            projectPdf.setAttribute('data', data.pdfUrl);
-            projectPdfDl.href = data.pdfUrl;
-        } else {
-            // No PDF yet — hide the section entirely
-            projectPdfSect.style.display = 'none';
-        }
-
-        // Open the modal
-        projectModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-
-    // Attach click listeners to all project card "More Details" buttons
-    document.querySelectorAll('[data-project-id]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            openProjectModal(btn.dataset.projectId);
-        });
-    });
-
-    // Close button inside the project modal
-    if (projectCloseBtn) {
-        projectCloseBtn.addEventListener('click', () => {
-            projectModal.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-    }
 
     // =====================================================
-    // B. GENERIC MODALS — Resume, Chenab, etc.
-    //    Uses [data-open] / [data-close] attributes.
+    // GENERIC MODALS — uses [data-open] / [data-close]
     // =====================================================
-
-    // Open triggers (for non-project modals like Resume & Chenab)
     document.querySelectorAll('[data-open]').forEach(trigger => {
         trigger.addEventListener('click', () => {
             const modalId = trigger.dataset.open;
