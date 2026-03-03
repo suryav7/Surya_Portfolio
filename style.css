@@ -91,7 +91,7 @@ html {
 }
 
 .section {
-  padding: 8rem 0;
+  padding: 6rem 0;
   position: relative;
 }
 
@@ -99,7 +99,7 @@ html {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   background: linear-gradient(135deg, var(--cyan), var(--white));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -293,11 +293,12 @@ html {
   padding: 2rem;
 }
 
-/* PLACEHOLDER: Profile photo — circular container */
+/* Profile photo — circular container with glow ring */
 .hero-photo {
   width: 140px;
   height: 140px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
+  /* strict spacing below photo */
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--cyan);
@@ -315,10 +316,19 @@ html {
   }
 }
 
-.hero-photo img {
+/* Premium 'S' logo inside the photo ring */
+.hero-logo-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--cyan);
+  background: var(--bg-primary);
+  border-radius: 50%;
+  user-select: none;
 }
 
 .hero-name {
@@ -494,11 +504,15 @@ html {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .skill-card {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* stretch to match tallest card in row */
 }
 
 .skill-card h3 {
@@ -608,6 +622,8 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  height: 100%;
+  /* stretch to fill grid row for even button alignment */
   position: relative;
   overflow: hidden;
 }
@@ -648,9 +664,73 @@ html {
   flex-grow: 1;
 }
 
-.project-card .btn-secondary {
-  align-self: flex-start;
-  margin-top: 0.5rem;
+/* Action row — "More Details" button + GitHub link side-by-side.
+   margin-top: auto pushes buttons to the card bottom regardless
+   of text length; padding-top gives breathing room from desc. */
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.project-actions .btn-secondary {
+  flex-shrink: 0;
+}
+
+/* GitHub "Source Code" link — sits beside the button */
+.project-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--white-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  transition: all var(--transition);
+}
+
+.project-github-link svg {
+  opacity: 0.7;
+  transition: opacity var(--transition);
+}
+
+.project-github-link:hover {
+  color: var(--cyan);
+  border-color: var(--cyan-dim);
+}
+
+.project-github-link:hover svg {
+  opacity: 1;
+}
+
+/* Project tags — small pill badges */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--cyan);
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  border-radius: 50px;
+  padding: 0.25rem 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 

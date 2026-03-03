@@ -66,11 +66,9 @@
         <canvas id="hero-canvas" class="hero-canvas"></canvas>
 
         <div class="hero-overlay">
-            <!-- PLACEHOLDER: Replace src with your actual profile photo -->
+            <!-- Premium 'S' logo inside the glowing ring -->
             <div class="hero-photo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='100' fill='%231a1a2e'/%3E%3Ctext x='100' y='115' text-anchor='middle' font-family='Inter,sans-serif' font-size='60' fill='%2306b6d4'%3ES%3C/text%3E%3C/svg%3E"
-                    alt="Surya — Profile Photo">
-                <!-- PLACEHOLDER: Replace the above data URI with your real profile image, e.g. src="assets/profile.jpg" -->
+                <span class="hero-logo-letter">S</span>
             </div>
             <h1 class="hero-name">Surya</h1>
             <!-- Typewriter line 1 -->
@@ -100,7 +98,7 @@
     <section id="about" class="section about">
         <div class="container">
             <h2 class="section-title">About</h2>
-            <p class="brand-text">Civil Engineering &times; AI &times; Geospatial &times; Civil Engineering Technology
+            <p class="brand-text">Civil Engineering &times; AI &times; Geospatial
             </p>
 
             <div class="stats-row">
@@ -128,32 +126,27 @@
          RESUME MODAL — Slides in full-screen with a PDF placeholder.
          PLACEHOLDER: Replace the iframe src with your actual PDF path.
     ====================================================== -->
-    <div id="modal-resume" class="modal">
-        <div class="modal-inner">
-            <button class="modal-close" data-close="modal-resume">&times;</button>
-            <h2>Resume</h2>
-            <div class="resume-viewer">
-                <!-- PLACEHOLDER: Replace the src below with your PDF file path, e.g. "assets/resume.pdf" -->
-                <div class="pdf-placeholder">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.5">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                        <line x1="16" y1="13" x2="8" y2="13" />
-                        <line x1="16" y1="17" x2="8" y2="17" />
-                        <polyline points="10 9 9 9 8 9" />
-                    </svg>
-                    <p>PDF Preview Area</p>
-                    <p class="hint">Replace this placeholder with an &lt;iframe&gt; or &lt;embed&gt; pointing to your
-                        resume PDF.</p>
-                </div>
-            </div>
-            <!-- PLACEHOLDER: Update the href to your actual PDF download link -->
-            <a href="#" class="btn-primary" download>Download PDF</a>
-            <!-- PLACEHOLDER: Change href="#" to href="assets/resume.pdf" once you have the file -->
+   <div id="modal-resume" class="modal">
+    <div class="modal-inner">
+        <button class="modal-close" data-close="modal-resume">&times;</button>
+        <h2>Resume</h2>
+
+        <div class="resume-viewer">
+            <!-- PDF inserted here -->
+            <iframe 
+                src="assets/SURYA Resume.pdf" 
+                width="100%" 
+                height="600px"
+                style="border: none;">
+            </iframe>
         </div>
+
+        <a href="assets/SURYA Resume.pdf" class="btn-primary" download>
+            Download PDF
+        </a>
+
     </div>
-
-
+</div>
     <!-- ======================================================
          SKILLS SECTION — 4 category cards with progress bars.
     ====================================================== -->
@@ -166,9 +159,9 @@
                 <div class="skill-card glass-card">
                     <h3>Core CE</h3>
                     <div class="skill-item">
-                        <span>Structural Engineering</span><span class="skill-level">Expert</span>
+                        <span>Structural Engineering</span><span class="skill-level">Intermediate</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="90"></div>
+                            <div class="skill-fill" data-width="60"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -184,9 +177,9 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Geomatics Engineering</span><span class="skill-level">Beginner</span>
+                        <span>Geomatics Engineering</span><span class="skill-level">Intermediate</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="30"></div>
+                            <div class="skill-fill" data-width="60"></div>
                         </div>
                     </div>
                 </div>
@@ -207,22 +200,22 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Revit</span><span class="skill-level">Beginner</span>
+                        <span>Revit</span><span class="skill-level">Intermediate</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="25"></div>
+                            <div class="skill-fill" data-width="60"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Git &amp; GitHub</span><span class="skill-level">Learning</span>
+                        <span>Git &amp; GitHub</span><span class="skill-level">Intermediate</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="20"></div>
+                            <div class="skill-fill" data-width="60"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3: Tech & Amateur -->
                 <div class="skill-card glass-card">
-                    <h3>Tech &amp; Amateur</h3>
+                    <h3>Tech</h3>
                     <div class="skill-item">
                         <span>Python</span><span class="skill-level">Intermediate</span>
                         <div class="skill-bar">
@@ -236,15 +229,15 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>HTML / CSS</span><span class="skill-level">Beginner</span>
+                        <span>HTML / CSS</span><span class="skill-level">Intermediate</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="30"></div>
+                            <div class="skill-fill" data-width="60"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Excel</span><span class="skill-level">Expert</span>
+                        <span>Excel</span><span class="skill-level">Intermediate</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="90"></div>
+                            <div class="skill-fill" data-width="60"></div>
                         </div>
                     </div>
                     <div class="skill-item">
@@ -267,13 +260,13 @@
                     <div class="skill-item">
                         <span>ETABS</span><span class="skill-level">Exploring</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="15"></div>
+                            <div class="skill-fill" data-width="5"></div>
                         </div>
                     </div>
                     <div class="skill-item">
                         <span>Primavera</span><span class="skill-level">Exploring</span>
                         <div class="skill-bar">
-                            <div class="skill-fill" data-width="10"></div>
+                            <div class="skill-fill" data-width="5"></div>
                         </div>
                     </div>
                 </div>
@@ -347,7 +340,9 @@
 
 
     <!-- ======================================================
-         PROJECTS SECTION — 3 premium project cards with "More Details" modals.
+         PROJECTS SECTION — 4 premium project cards with dynamic modals.
+         Each card has a "More Details" button + a GitHub "Source Code" link.
+         CSS UPDATE NOTE: If you add more projects, the grid auto-fits.
     ====================================================== -->
     <section id="projects" class="section projects">
         <div class="container">
@@ -359,10 +354,20 @@
                 <div class="project-card glass-card">
                     <div class="project-icon">🌊</div>
                     <h3>Flood Mapping using AI/ML</h3>
-                    <p class="project-org">India Space Academy Internship</p>
+                    <p class="project-org">ISA Winter Training & Internship</p>
                     <p class="project-desc">Leveraging satellite imagery and machine learning models to map flood-prone
                         zones with high spatial accuracy.</p>
-                    <button class="btn-secondary" data-project-id="flood">More Details</button>
+                    <div class="project-actions">
+                        <button class="btn-secondary" data-project-id="flood">More Details</button>
+                        <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
+                        <a href="#" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            Source Code
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Project 2: BIM Office Building -->
@@ -372,7 +377,17 @@
                     <p class="project-org">SIH '25 Event</p>
                     <p class="project-desc">Designing a full-scale commercial office building within a BIM environment,
                         integrating clash detection and 4D scheduling.</p>
-                    <button class="btn-secondary" data-project-id="bim">More Details</button>
+                    <div class="project-actions">
+                        <button class="btn-secondary" data-project-id="bim">More Details</button>
+                        <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
+                        <a href="#" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            Source Code
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Project 3: Smart Drainage -->
@@ -382,7 +397,45 @@
                     <p class="project-org">NIT Agartala Event</p>
                     <p class="project-desc">IoT-driven drainage management with AI predictive modeling for real-time
                         urban flood mitigation.</p>
-                    <button class="btn-secondary" data-project-id="drainage">More Details</button>
+                    <div class="project-actions">
+                        <button class="btn-secondary" data-project-id="drainage">More Details</button>
+                        <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
+                        <a href="#" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            Source Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Cinematic 3D Engineering Portfolio
+                     Built using 'vibe coding' with AI assistance (Antigravity). -->
+                <div class="project-card glass-card">
+                    <div class="project-icon">🚀</div>
+                    <h3>Cinematic 3D Engineering Portfolio</h3>
+                    <p class="project-org">Personal Project — Vibe Coding</p>
+                    <p class="project-desc">A high-performance digital twin portfolio built using 'vibe coding' with AI
+                        assistance (Antigravity). Features custom Three.js structural rendering, GLSL shaders, and
+                        GSAP cinematic scroll triggers.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Three.js</span>
+                        <span class="project-tag">AI / Vibe Coding</span>
+                        <span class="project-tag">Web3D</span>
+                        <span class="project-tag">GSAP</span>
+                    </div>
+                    <div class="project-actions">
+                        <button class="btn-secondary" data-project-id="portfolio">More Details</button>
+                        <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
+                        <a href="#" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            Source Code
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -540,7 +593,7 @@
             <div class="contact-grid">
                 <!-- Social Links -->
                 <div class="contact-links glass-card">
-                    <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <a href="www.linkedin.com/in/suryav7" class="contact-link" target="_blank" rel="noopener noreferrer">
                         <!-- PLACEHOLDER: Replace href="#" with your actual LinkedIn URL -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -548,7 +601,7 @@
                         </svg>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/suryav7" class="contact-link" target="_blank" rel="noopener noreferrer">
                         <!-- PLACEHOLDER: Replace href="#" with your actual GitHub URL -->
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -572,7 +625,7 @@
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                             <circle cx="12" cy="10" r="3" />
                         </svg>
-                        <span>India</span>
+                        <span>Uttar Pradesh, India</span>
                     </div>
                 </div>
 
@@ -585,7 +638,7 @@
                         <span class="terminal-title">surya@portfolio ~ $</span>
                     </div>
                     <div class="terminal-body">
-                        <p><span class="t-prompt">$</span> whoami</p>
+                        <p><span class="t-prompt">$</span>I am</p>
                         <p class="t-output">Surya — Civil Engineering Student</p>
                         <p><span class="t-prompt">$</span> cat interests.txt</p>
                         <p class="t-output">Structural Analysis, AI in Infrastructure, Geospatial Mapping, BIM</p>

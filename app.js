@@ -661,6 +661,28 @@ const PROJECT_DATA = {
         ],
         // PLACEHOLDER: Replace with actual PDF path, e.g. "assets/drainage-report.pdf"
         pdfUrl: ''
+    },
+
+    portfolio: {
+        title: 'Cinematic 3D Engineering Portfolio',
+        org: 'Personal Project — Vibe Coding',
+        bodyHTML: `
+            <p>A high-performance digital twin portfolio built using <strong>'vibe coding'</strong> with AI
+            assistance (Antigravity). The site features custom Three.js structural rendering of the Chenab
+            Bridge with stress-map, blueprint, and realistic view modes — all rendered in real-time.</p>
+            <p>Key technologies: Three.js for 3D geometry and vertex-colored stress analysis, GSAP with
+            ScrollTrigger for cinematic section reveals, and glassmorphism CSS for a dark futuristic aesthetic.
+            The entire build was orchestrated through natural-language prompts, proving that AI-assisted
+            'vibe coding' can produce production-ready, visually premium web applications.</p>
+        `,
+        // PLACEHOLDER: Replace with actual portfolio screenshots, e.g. "assets/portfolio-hero.png"
+        images: [
+            { src: '', alt: 'Portfolio Hero Section' },
+            { src: '', alt: '3D Bridge Viewer' },
+            { src: '', alt: 'Technical Analysis View' }
+        ],
+        // PLACEHOLDER: Replace with actual PDF path, e.g. "assets/portfolio-case-study.pdf"
+        pdfUrl: ''
     }
 };
 
