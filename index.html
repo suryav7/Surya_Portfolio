@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surya | Civil Engineering Portfolio</title>
+    <meta name="description"
+        content="Premium portfolio of Surya — Civil Engineering, AI, Geospatial Technology, and Structural Analysis.">
+
+    <!-- ======================================================
+         FAVICON — Stylish cyan "S" SVG rendered inline as a data URI.
+         To change the letter or color, edit the SVG below.
+    ====================================================== -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2306b6d4'/%3E%3Cstop offset='100%25' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect rx='14' width='64' height='64' fill='%230f0f0f'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='40' fill='url(%23g)'%3ES%3C/text%3E%3C/svg%3E">
+
+    <!-- Google Font — Inter for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Three.js r160 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <!-- OrbitControls — loaded after Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ======================================================
+         NAVBAR — Fixed glassmorphism navigation bar.
+         Links scroll smoothly to each section.
+    ====================================================== -->
+    <nav id="navbar" class="navbar">
+        <a href="#hero" class="nav-logo">S<span>urya</span></a>
+        <div class="nav-links">
+            <a href="#hero" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#certificates" class="nav-link">Certificates</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#analysis" class="nav-link">Analysis</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <!-- Mobile hamburger button -->
+        <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ======================================================
+         HERO SECTION — Full-screen Three.js canvas with overlay UI.
+         The 3D bridge uses a stress-map material (red base → cyan top).
+    ====================================================== -->
+    <section id="hero" class="hero">
+        <!-- Three.js renders into this canvas -->
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+
+        <div class="hero-overlay">
+            <!-- PLACEHOLDER: Replace src with your actual profile photo -->
+            <div class="hero-photo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='100' fill='%231a1a2e'/%3E%3Ctext x='100' y='115' text-anchor='middle' font-family='Inter,sans-serif' font-size='60' fill='%2306b6d4'%3ES%3C/text%3E%3C/svg%3E"
+                    alt="Surya — Profile Photo">
+                <!-- PLACEHOLDER: Replace the above data URI with your real profile image, e.g. src="assets/profile.jpg" -->
+            </div>
+            <h1 class="hero-name">Surya</h1>
+            <!-- Typewriter line 1 -->
+            <p class="hero-typewriter" id="typewriter-role"></p>
+            <!-- Static subtext -->
+            <p class="hero-domains">
+                Structural Engineering &nbsp;|&nbsp; Geotechnical Engineering &nbsp;|&nbsp; Transportation Engineering
+                &nbsp;|&nbsp; Geomatics Engineering
+            </p>
+            <!-- Typewriter line 2 -->
+            <p class="hero-typewriter" id="typewriter-tagline"></p>
+        </div>
+
+        <!-- Scroll-down indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         ABOUT SECTION — Brand statement, stats, and resume button.
+    ====================================================== -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <p class="brand-text">Civil Engineering &times; AI &times; Geospatial &times; Civil Engineering Technology
+            </p>
+
+            <div class="stats-row">
+                <div class="stat-card glass-card">
+                    <span class="stat-number" data-target="3">0</span>
+                    <span class="stat-label">Core Projects</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number" data-target="1">0</span>
+                    <span class="stat-label">Primary Research Area</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-label" style="font-size:1rem;color:var(--cyan);">Chenab Bridge</span>
+                    <span class="stat-label">Focused Study</span>
+                </div>
+            </div>
+
+            <!-- Resume Button — opens the resume modal -->
+            <button id="btn-resume" class="btn-primary">View Resume</button>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         RESUME MODAL — Slides in full-screen with a PDF placeholder.
+         PLACEHOLDER: Replace the iframe src with your actual PDF path.
+    ====================================================== -->
+    <div id="modal-resume" class="modal">
+        <div class="modal-inner">
+            <button class="modal-close" data-close="modal-resume">&times;</button>
+            <h2>Resume</h2>
+            <div class="resume-viewer">
+                <!-- PLACEHOLDER: Replace the src below with your PDF file path, e.g. "assets/resume.pdf" -->
+                <div class="pdf-placeholder">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                    <p>PDF Preview Area</p>
+                    <p class="hint">Replace this placeholder with an &lt;iframe&gt; or &lt;embed&gt; pointing to your
+                        resume PDF.</p>
+                </div>
+            </div>
+            <!-- PLACEHOLDER: Update the href to your actual PDF download link -->
+            <a href="#" class="btn-primary" download>Download PDF</a>
+            <!-- PLACEHOLDER: Change href="#" to href="assets/resume.pdf" once you have the file -->
+        </div>
+    </div>
+
+
+    <!-- ======================================================
+         SKILLS SECTION — 4 category cards with progress bars.
+    ====================================================== -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+
+                <!-- Card 1: Core CE -->
+                <div class="skill-card glass-card">
+                    <h3>Core CE</h3>
+                    <div class="skill-item">
+                        <span>Structural Engineering</span><span class="skill-level">Expert</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Geotechnical Engineering</span><span class="skill-level">Intermediate</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="60"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Transportation Engineering</span><span class="skill-level">Intermediate</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="60"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Geomatics Engineering</span><span class="skill-level">Beginner</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="30"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Software & Tools -->
+                <div class="skill-card glass-card">
+                    <h3>Software &amp; Tools</h3>
+                    <div class="skill-item">
+                        <span>AutoCAD 2D &amp; 3D</span><span class="skill-level">Expert</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>QGIS</span><span class="skill-level">Intermediate</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="55"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Revit</span><span class="skill-level">Beginner</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="25"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Git &amp; GitHub</span><span class="skill-level">Learning</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="20"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Tech & Amateur -->
+                <div class="skill-card glass-card">
+                    <h3>Tech &amp; Amateur</h3>
+                    <div class="skill-item">
+                        <span>Python</span><span class="skill-level">Intermediate</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="60"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>C</span><span class="skill-level">Intermediate</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="55"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>HTML / CSS</span><span class="skill-level">Beginner</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="30"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Excel</span><span class="skill-level">Expert</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Video Editing</span><span class="skill-level">Intermediate</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="55"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Learning & Exploring -->
+                <div class="skill-card glass-card">
+                    <h3>Learning &amp; Exploring</h3>
+                    <div class="skill-item">
+                        <span>STAAD</span><span class="skill-level">Exploring</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="15"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>ETABS</span><span class="skill-level">Exploring</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="15"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Primavera</span><span class="skill-level">Exploring</span>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="10"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         CERTIFICATES SECTION — 4 glassmorphism placeholder cards.
+         PLACEHOLDER: Replace each card's content with your certificate images.
+         CSS UPDATE NOTE: If you add more certificates, adjust the grid-template-columns.
+    ====================================================== -->
+    <section id="certificates" class="section certificates">
+        <div class="container">
+            <h2 class="section-title">Certificates</h2>
+            <div class="cert-grid">
+
+                <div class="cert-card glass-card">
+                    <!-- PLACEHOLDER: Replace with <img src="assets/cert1.jpg" alt="Certificate 1"> -->
+                    <div class="cert-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <line x1="12" y1="8" x2="12" y2="16" />
+                            <line x1="8" y1="12" x2="16" y2="12" />
+                        </svg>
+                        <p>Upload Certificate</p>
+                    </div>
+                </div>
+
+                <div class="cert-card glass-card">
+                    <!-- PLACEHOLDER: Replace with <img src="assets/cert2.jpg" alt="Certificate 2"> -->
+                    <div class="cert-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <line x1="12" y1="8" x2="12" y2="16" />
+                            <line x1="8" y1="12" x2="16" y2="12" />
+                        </svg>
+                        <p>Upload Certificate</p>
+                    </div>
+                </div>
+
+                <div class="cert-card glass-card">
+                    <!-- PLACEHOLDER: Replace with <img src="assets/cert3.jpg" alt="Certificate 3"> -->
+                    <div class="cert-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <line x1="12" y1="8" x2="12" y2="16" />
+                            <line x1="8" y1="12" x2="16" y2="12" />
+                        </svg>
+                        <p>Upload Certificate</p>
+                    </div>
+                </div>
+
+                <div class="cert-card glass-card">
+                    <!-- PLACEHOLDER: Replace with <img src="assets/cert4.jpg" alt="Certificate 4"> -->
+                    <div class="cert-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <line x1="12" y1="8" x2="12" y2="16" />
+                            <line x1="8" y1="12" x2="16" y2="12" />
+                        </svg>
+                        <p>Upload Certificate</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         PROJECTS SECTION — 3 premium project cards with "More Details" modals.
+    ====================================================== -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title">Projects — Domain-Wise Expertise</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1: Flood Mapping
+                     data-project-id is read by JS to inject the right data into the dynamic modal -->
+                <div class="project-card glass-card">
+                    <div class="project-icon">🌊</div>
+                    <h3>Flood Mapping using AI/ML</h3>
+                    <p class="project-org">India Space Academy Internship</p>
+                    <p class="project-desc">Leveraging satellite imagery and machine learning models to map flood-prone
+                        zones with high spatial accuracy.</p>
+                    <button class="btn-secondary" data-project-id="flood">More Details</button>
+                </div>
+
+                <!-- Project 2: BIM Office Building -->
+                <div class="project-card glass-card">
+                    <div class="project-icon">🏢</div>
+                    <h3>Commercial Office Building in BIM</h3>
+                    <p class="project-org">SIH '25 Event</p>
+                    <p class="project-desc">Designing a full-scale commercial office building within a BIM environment,
+                        integrating clash detection and 4D scheduling.</p>
+                    <button class="btn-secondary" data-project-id="bim">More Details</button>
+                </div>
+
+                <!-- Project 3: Smart Drainage -->
+                <div class="project-card glass-card">
+                    <div class="project-icon">💧</div>
+                    <h3>Smart Drainage &amp; Flood Management</h3>
+                    <p class="project-org">NIT Agartala Event</p>
+                    <p class="project-desc">IoT-driven drainage management with AI predictive modeling for real-time
+                        urban flood mitigation.</p>
+                    <button class="btn-secondary" data-project-id="drainage">More Details</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         DYNAMIC PROJECT MODAL — Single reusable modal.
+         JS populates the title, org, body, gallery, and PDF
+         dynamically based on which project card was clicked.
+    ====================================================== -->
+    <div id="modal-project" class="modal">
+        <div class="modal-inner modal-project-inner">
+            <!-- Sticky close button (top-right) -->
+            <button class="modal-close" id="modal-project-close">&times;</button>
+
+            <!-- Content container: flex column with gap prevents all overlap -->
+            <div class="modal-project-content">
+
+                <!-- Title & org (injected by JS) -->
+                <h2 id="modal-project-title"></h2>
+                <p class="modal-org" id="modal-project-org"></p>
+
+                <!-- Main article / case study text (injected by JS) -->
+                <div class="modal-body" id="modal-project-body"></div>
+
+                <!-- =============================================
+                     IMAGE GALLERY — CSS Grid with 3 placeholders.
+                     PLACEHOLDER: Replace src values with your
+                     actual project images, e.g.
+                     src="assets/flood-map-1.png"
+                ============================================= -->
+                <div class="modal-gallery" id="modal-project-gallery">
+                    <!-- JS injects <img> tags here dynamically -->
+                </div>
+
+                <!-- =============================================
+                     PDF VIEWER — Inline report viewer.
+                     PLACEHOLDER: Replace the data attribute in
+                     the <object> tag with your actual PDF path,
+                     e.g. data="assets/flood-report.pdf"
+                ============================================= -->
+                <div class="modal-pdf-section" id="modal-project-pdf-section">
+                    <h3>Project Report</h3>
+                    <object id="modal-project-pdf" type="application/pdf" width="100%" height="600">
+                        <p class="pdf-fallback-text">Your browser does not support inline PDF viewing.</p>
+                    </object>
+                    <!-- CRITICAL FALLBACK: Download button for mobile browsers that block inline PDF -->
+                    <a id="modal-project-pdf-download" href="#" class="btn-secondary modal-pdf-download" download>
+                        Download Full Report (PDF)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======================================================
+         TECHNICAL ANALYSIS SECTION — Chenab Bridge ONLY.
+         Detail panel + interactive Three.js 3D viewer with 3 view modes.
+    ====================================================== -->
+    <section id="analysis" class="section analysis">
+        <div class="container">
+            <h2 class="section-title">Technical Analysis — Chenab Bridge</h2>
+
+            <div class="analysis-layout">
+                <!-- Left: Detail Panel -->
+                <div class="analysis-details glass-card">
+                    <h3>Chenab Bridge</h3>
+                    <p class="analysis-subtitle">World's Highest Railway Bridge</p>
+                    <table class="detail-table">
+                        <tr>
+                            <td>Structural Type</td>
+                            <td>Steel Arch</td>
+                        </tr>
+                        <tr>
+                            <td>Arch Span</td>
+                            <td>467 m</td>
+                        </tr>
+                        <tr>
+                            <td>Height Above River</td>
+                            <td>359 m</td>
+                        </tr>
+                        <tr>
+                            <td>Wind Resistance</td>
+                            <td>260 km/h</td>
+                        </tr>
+                        <tr>
+                            <td>Designed By</td>
+                            <td>Afcons Infrastructure, DRDO, IISc</td>
+                        </tr>
+                    </table>
+                    <button class="btn-secondary" data-open="modal-chenab">More Details</button>
+                </div>
+
+                <!-- Right: 3D Viewer -->
+                <div class="analysis-viewer glass-card">
+                    <canvas id="chenab-canvas" class="chenab-canvas"></canvas>
+                    <div class="viewer-controls">
+                        <button class="viewer-btn active" data-view="realistic">Realistic</button>
+                        <button class="viewer-btn" data-view="blueprint">Blueprint</button>
+                        <button class="viewer-btn" data-view="stress">Stress Map</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         CHENAB BRIDGE — "More Details" Modal.
+         Explains the Load Transfer Mechanism.
+    ====================================================== -->
+    <div id="modal-chenab" class="modal">
+        <div class="modal-inner">
+            <button class="modal-close" data-close="modal-chenab">&times;</button>
+            <h2>Chenab Bridge — Load Transfer Mechanism</h2>
+            <div class="modal-body">
+                <h3>Compression in the Arch</h3>
+                <p>The steel arch acts as the primary load-bearing element. Dead loads from the deck (self-weight of the
+                    railway track, ballast, and concrete deck slab) and live loads (train loading as per IRS Bridge
+                    Rules) are transferred vertically downward through the spandrel columns into the arch crown. The
+                    parabolic geometry of the arch converts these vertical forces into axial compression along the arch
+                    rib, channeling the load efficiently toward the abutments at each springing point.</p>
+
+                <h3>Tension in the Deck</h3>
+                <p>The deck, a composite plate girder system spanning between spandrel piers, experiences bending under
+                    direct live loads. The bottom flange of each girder is in tension while the top flange, bonded to
+                    the concrete deck slab, resists compression. The deck also acts as a horizontal tie at the crown
+                    level, resisting the outward thrust of the arch. This interplay between arch compression and deck
+                    tension creates a self-equilibrating structural system that minimizes the horizontal reaction forces
+                    transferred to the foundations.</p>
+
+                <h3>Wind &amp; Seismic Resistance</h3>
+                <p>The bridge is designed to withstand wind speeds of up to 260 km/h. Lateral bracing between the twin
+                    arch ribs (K-bracing and cross-frames) provides torsional stiffness, while tuned mass dampers
+                    address vortex-induced vibrations. Seismic isolation bearings at the deck-pier interfaces allow
+                    controlled movement during an earthquake event, protecting the arch from dynamic amplification.</p>
+                <!-- PLACEHOLDER: Add structural diagrams, FEM screenshots, or stress contour images here -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======================================================
+         CONTACT & FOOTER SECTION —
+         Social links, terminal bio box, and copyright.
+    ====================================================== -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Connect</h2>
+
+            <div class="contact-grid">
+                <!-- Social Links -->
+                <div class="contact-links glass-card">
+                    <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <!-- PLACEHOLDER: Replace href="#" with your actual LinkedIn URL -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <!-- PLACEHOLDER: Replace href="#" with your actual GitHub URL -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:placeholder@email.com" class="contact-link">
+                        <!-- PLACEHOLDER: Replace mailto address with your actual email -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                    <div class="contact-link">
+                        <!-- PLACEHOLDER: Update location text if needed -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <span>India</span>
+                    </div>
+                </div>
+
+                <!-- Terminal / Intro Box -->
+                <div class="terminal-box glass-card">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">surya@portfolio ~ $</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="t-prompt">$</span> whoami</p>
+                        <p class="t-output">Surya — Civil Engineering Student</p>
+                        <p><span class="t-prompt">$</span> cat interests.txt</p>
+                        <p class="t-output">Structural Analysis, AI in Infrastructure, Geospatial Mapping, BIM</p>
+                        <p><span class="t-prompt">$</span> cat mission.txt</p>
+                        <p class="t-output">Building infrastructure with intelligence.</p>
+                        <!-- PLACEHOLDER: Add more terminal lines if you want -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Surya. Engineered with precision.</p>
+    </footer>
+
+
+    <!-- Main JavaScript — loaded after all DOM elements -->
+    <script src="app.js" defer></script>
+
+</body>
+
+</html>
