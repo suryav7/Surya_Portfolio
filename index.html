@@ -655,14 +655,19 @@
                         </svg>
                         <span>GitHub</span>
                     </a>
-                   <a href="mailto:surya@gmail.com?subject=Inquiry%20from%20Portfolio%20Website" class="contact-link glass-card">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                            <polyline points="22,6 12,13 2,6" />
-                        </svg>
-                        <span>Email-NA right now</span>
-                    </a>
+                    <!-- Glassmorphism Contact Form (Formspree) -->
+                    <form class="glass-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required class="glass-input">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required class="glass-input">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="4" required class="glass-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
                     <div class="contact-link">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
