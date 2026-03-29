@@ -3,7 +3,48 @@
    Handles: Three.js scenes, GSAP animations, typewriter,
    modal interactions, navbar, and Chenab bridge viewer.
    ========================================================== */
+// --- Custom Terminal Preloader Sequence ---
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    const textEl = document.getElementById('preloader-text');
+    
+    // The phrases
+    const phase1 = "> EXECUTING FINITE_ELEMENTS_ANALYSIS.EXE...";
+    const phase2 = " SYSTEM STABLE.";
+    
+    let charIndex = 0;
 
+    // Step 1: Type out the first phrase
+    function typePhase1() {
+        if (charIndex < phase1.length) {
+            textEl.innerHTML += phase1.charAt(charIndex);
+            charIndex++;
+            // Randomize typing speed slightly for realism (between 30ms and 80ms)
+            setTimeout(typePhase1, Math.random() * 50 + 30);
+        } else {
+            // Pause for suspense, then show GRANTED
+            setTimeout(showGranted, 600);
+        }
+    }
+
+    // Step 2: Flash "GRANTED." in success green
+    function showGranted() {
+        // Adds the text wrapped in a green color span
+        textEl.innerHTML += `<span style="color: #22c55e; font-weight: bold;">${phase2}</span>`;
+        
+        // Hold the screen for exactly 1 second so they can read it, then fade out
+        setTimeout(hidePreloader, 1000);
+    }
+
+    // Step 3: Fade away revealing the 3D bridge
+    function hidePreloader() {
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+    }
+
+    // Kick off the animation!
+    setTimeout(typePhase1, 300); // Brief delay before typing starts
+});
 // Wait for all scripts (Three.js, GSAP) to load before init
 window.addEventListener('DOMContentLoaded', () => {
     initNavbar();
