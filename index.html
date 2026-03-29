@@ -8,6 +8,22 @@
     <meta name="description"
         content="Premium portfolio of Surya — Civil Engineering, AI, Geospatial Technology, and Structural Analysis.">
 
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Surya | Civil Engineering Portfolio">
+    <meta property="og:description"
+        content="Premium portfolio of Surya — Civil Engineering, AI, Geospatial Technology, and Structural Analysis.">
+    <meta property="og:image" content="Assets/PS 2.png">
+    <meta property="og:url" content="https://suryav7.github.io/Surya_Portfolio/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Surya Portfolio">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Surya | Civil Engineering Portfolio">
+    <meta name="twitter:description"
+        content="Premium portfolio of Surya — Civil Engineering, AI, Geospatial Technology, and Structural Analysis.">
+    <meta name="twitter:image" content="Assets/PS 2.png">
+
     <!-- ======================================================
          FAVICON — Stylish cyan "S" SVG rendered inline as a data URI.
          To change the letter or color, edit the SVG below.
@@ -35,6 +51,20 @@
 </head>
 
 <body>
+
+    <!-- ======================================================
+         WEBGL PRELOADER — Full-screen loading overlay with
+         glowing 'S' logo. Fades out after Three.js constructs.
+    ====================================================== -->
+    <div id="preloader">
+        <div class="preloader-logo">S</div>
+        <p class="preloader-text">INITIALIZING WEBGL ENVIRONMENT...</p>
+    </div>
+
+    <!-- ======================================================
+         SCROLL PROGRESS BAR — Fixed at top, grows with scroll.
+    ====================================================== -->
+    <div id="scroll-progress"></div>
 
     <!-- ======================================================
          NAVBAR — Fixed glassmorphism navigation bar.
@@ -136,7 +166,8 @@
             <div class="resume-header">
                 <h2>Resume</h2>
                 <!-- PLACEHOLDER: Change href="#" to href="assets/resume.pdf" -->
-                <a href="Assets/Surya Resume 04-03-26.pdf" class="btn-primary resume-download-btn" download>Download PDF</a>
+                <a href="Assets/Surya Resume 04-03-26.pdf" class="btn-primary resume-download-btn" download>Download
+                    PDF</a>
             </div>
 
             <!-- PDF Viewer — iframe is contained, no dual scrollbar -->
@@ -287,92 +318,55 @@
     </section>
 
 
-   <!-- ======================================================
-         ALL CERTIFICATES MODAL — 12-slot gallery grid.
-         First 4 slots are populated; remaining 8 are placeholders.
+    <!-- ======================================================
+         CERTIFICATES SECTION — 4 glassmorphism placeholder cards.
+         PLACEHOLDER: Replace each card's content with your certificate images.
+         CSS UPDATE NOTE: If you add more certificates, adjust the grid-template-columns.
     ====================================================== -->
-    <div id="modal-all-certs" class="modal">
-        <div class="modal-inner" style="max-width:960px;">
-            <button class="modal-close" data-close="modal-all-certs">&times;</button>
-            <h2>All Certificates</h2>
-            <p class="modal-org">Professional Development &amp; Training</p>
-            <div class="modal-body">
-                <div class="cert-modal-grid">
-                    <!-- Slot 1 -->
-                    <div class="cert-wrapper">
-                        <img src="Assets/Internship Certificate.png" alt="IIT Roorkee AutoCAD Certificate"
-                            loading="lazy" decoding="async" class="media-fit">
-                        <h4 class="cert-title">AutoCAD Certification</h4>
-                    </div>
-                    <!-- Slot 2 -->
-                    <div class="cert-wrapper">
-                        <img src="Assets/Python Completion.png" alt="IIT Roorkee Quiz Certificate" loading="lazy"
-                            decoding="async" class="media-fit">
-                        <h4 class="cert-title">Quiz Championship</h4>
-                    </div>
-                    <!-- Slot 3 -->
-                    <div class="cert-wrapper">
-                        <img src="Assets/Training Certificate.png" alt="NIT Agartala Certificate" loading="lazy"
-                            decoding="async" class="media-fit">
-                        <h4 class="cert-title">NIT Agartala Event</h4>
-                    </div>
-                    <div class="cert-wrapper">
-                        <img src="Assets/Internship Certificate.png" alt="VVM Certificate" loading="lazy"
-                            decoding="async" class="media-fit">
-                        <h4 class="cert-title">VVM Certificate</h4>
-                    </div>
+    <section id="certificates" class="section certificates">
+        <div class="container">
+            <h2 class="section-title">Certificates</h2>
+            <div class="cert-grid">
 
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_5.png" alt="Certificate 5 Name" loading="lazy" decoding="async"
+                <!-- Certificate 1 -->
+                <div class="cert-card glass-card">
+                    <div class="cert-wrapper" style="border: none; background: transparent; padding: 0;">
+                        <img src="Assets/IITR AutoCAD.png" alt="IITR AutoCAD" loading="lazy" decoding="async"
                             class="media-fit">
-                        <h4 class="cert-title">Certificate 5 Title</h4>
-                    </div>
-
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_6.png" alt="Certificate 6 Name" loading="lazy" decoding="async"
-                            class="media-fit">
-                        <h4 class="cert-title">Certificate 6 Title</h4>
-                    </div>
-
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_7.png" alt="Certificate 7 Name" loading="lazy" decoding="async"
-                            class="media-fit">
-                        <h4 class="cert-title">Certificate 7 Title</h4>
-                    </div>
-
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_8.png" alt="Certificate 8 Name" loading="lazy" decoding="async"
-                            class="media-fit">
-                        <h4 class="cert-title">Certificate 8 Title</h4>
-                    </div>
-
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_9.png" alt="Certificate 9 Name" loading="lazy" decoding="async"
-                            class="media-fit">
-                        <h4 class="cert-title">Certificate 9 Title</h4>
-                    </div>
-
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_10.png" alt="Certificate 10 Name" loading="lazy" decoding="async"
-                            class="media-fit">
-                        <h4 class="cert-title">Certificate 10 Title</h4>
-                    </div>
-
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_11.png" alt="Certificate 11 Name" loading="lazy" decoding="async"
-                            class="media-fit">
-                        <h4 class="cert-title">Certificate 11 Title</h4>
-                    </div>
-
-                    <div class="cert-wrapper">
-                        <img src="Assets/Your_Cert_12.png" alt="Certificate 12 Name" loading="lazy" decoding="async"
-                            class="media-fit">
-                        <h4 class="cert-title">Certificate 12 Title</h4>
+                        <h4 class="cert-title" style="margin-top: 0.8rem;">AutoCAD Certification</h4>
                     </div>
                 </div>
+
+                <!-- Certificate 2 -->
+                <div class="cert-card glass-card">
+                    <div class="cert-wrapper" style="border: none; background: transparent; padding: 0;">
+                        <img src="Assets/Python Completion.png" alt="Python Completion" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title" style="margin-top: 0.8rem;">Python Completion</h4>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="cert-card glass-card">
+                    <div class="cert-wrapper" style="border: none; background: transparent; padding: 0;">
+                        <img src="Assets/Training Certificate.png" alt="Training Certificate" loading="lazy"
+                            decoding="async" class="media-fit">
+                        <h4 class="cert-title" style="margin-top: 0.8rem;">Training Event</h4>
+                    </div>
+                </div>
+
+                <!-- View All — Stacked card trigger -->
+                <div class="cert-card glass-card view-more-stack" data-open="modal-all-certs">
+                    <div class="stack-content">
+                        <span class="stack-icon">📚</span>
+                        <h3>View All 12</h3>
+                        <p>Explore Credentials</p>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
+    </section>
 
 
     <!-- ======================================================
@@ -395,7 +389,8 @@
                     <div class="project-actions">
                         <button class="btn-secondary" data-open="modal-flood">More Details</button>
                         <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
-                        <a href="https://github.com/suryav7/Flood-Mapping" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                        <a href="https://github.com/suryav7/Flood-Mapping" target="_blank" class="project-github-link"
+                            rel="noopener noreferrer">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -415,7 +410,8 @@
                     <div class="project-actions">
                         <button class="btn-secondary" data-open="modal-bim">More Details</button>
                         <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
-                        <a href="https://github.com/suryav7/SIH-25" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                        <a href="https://github.com/suryav7/SIH-25" target="_blank" class="project-github-link"
+                            rel="noopener noreferrer">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -435,7 +431,8 @@
                     <div class="project-actions">
                         <button class="btn-secondary" data-open="modal-drainage">More Details</button>
                         <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
-                        <a href="https://github.com/suryav7/Smart-Drainage" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                        <a href="https://github.com/suryav7/Smart-Drainage" target="_blank" class="project-github-link"
+                            rel="noopener noreferrer">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -462,7 +459,8 @@
                     <div class="project-actions">
                         <button class="btn-secondary" data-open="modal-portfolio">More Details</button>
                         <!-- PLACEHOLDER: Replace href="#" with your actual GitHub repo URL -->
-                        <a href="https://github.com/suryav7/Surya_Portfolio" target="_blank" class="project-github-link" rel="noopener noreferrer">
+                        <a href="https://github.com/suryav7/Surya_Portfolio" target="_blank" class="project-github-link"
+                            rel="noopener noreferrer">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -500,8 +498,10 @@
 
             <!-- Image Gallery — PLACEHOLDER: Replace src with your actual images -->
             <div class="modal-gallery">
-                <img src="Assets/Flood_Risk_Zonation_Gorakhpur.png" alt="Flood Map Output" class="media-fit">
-                <img src="Assets/Flood Mapping.png" alt="GIS Dashboard View" class="media-fit">
+                <img src="Assets/Flood_Risk_Zonation_Gorakhpur.png" alt="Flood Map Output" class="media-fit"
+                    loading="lazy" decoding="async">
+                <img src="Assets/Flood Mapping.png" alt="GIS Dashboard View" class="media-fit" loading="lazy"
+                    decoding="async">
             </div>
         </div>
     </div>
@@ -529,8 +529,9 @@
 
             <!-- Image Gallery — PLACEHOLDER: Replace src with your actual images -->
             <div class="modal-gallery">
-                <img src="Assets/NITA work.jpeg" alt="IoT Sensor Layout" class="media-fit">
-                <img src="Assets/SM 3.png" alt="System Architecture" class="media-fit">
+                <img src="Assets/NITA work.jpeg" alt="IoT Sensor Layout" class="media-fit" loading="lazy"
+                    decoding="async">
+                <img src="Assets/SM 3.png" alt="System Architecture" class="media-fit" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -557,8 +558,9 @@
 
             <!-- Image Gallery — PLACEHOLDER: Replace src with your actual images -->
             <div class="modal-gallery">
-                <img src="Assets/BIM1.png" alt="BIM 3D Model View" class="media-fit">
-                <img src="Assets/BIM2.png" alt="Clash Detection Report" class="media-fit">
+                <img src="Assets/BIM1.png" alt="BIM 3D Model View" class="media-fit" loading="lazy" decoding="async">
+                <img src="Assets/BIM2.png" alt="Clash Detection Report" class="media-fit" loading="lazy"
+                    decoding="async">
             </div>
         </div>
     </div>
@@ -587,8 +589,9 @@
 
             <!-- Image Gallery — PLACEHOLDER: Replace src with your actual images -->
             <div class="modal-gallery">
-                <img src="Assets/PS 2.png" alt="Portfolio Hero Section" class="media-fit">
-                <img src="Assets/PS 1.png" alt="3D Bridge Viewer" class="media-fit">
+                <img src="Assets/PS 2.png" alt="Portfolio Hero Section" class="media-fit" loading="lazy"
+                    decoding="async">
+                <img src="Assets/PS 1.png" alt="3D Bridge Viewer" class="media-fit" loading="lazy" decoding="async">
             </div>
         </div>
     </div>
@@ -690,71 +693,172 @@
             <h2 class="section-title">Connect</h2>
 
             <div class="contact-grid">
-                <!-- Social Links — PLACEHOLDER: Swap YOUR_USERNAME / your_email with real values -->
-                <div class="contact-links glass-card">
-                    <a href="https://linkedin.com/in/suryav7" target="_blank" class="contact-link glass-card"
-                        rel="noopener noreferrer">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/suryav7" target="_blank" class="contact-link glass-card"
-                        rel="noopener noreferrer">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                        </svg>
-                        <span>GitHub</span>
-                    </a>
+                <!-- Left: Contact Form -->
+                <div class="glass-card" style="padding: 2.5rem 2rem;">
+                    <h3 style="margin-top: 0; color: var(--cyan); font-size: 1.4rem; font-weight: 800;">Send a Message
+                    </h3>
                     <!-- Glassmorphism Contact Form (Formspree) -->
-                   <form action="https://formspree.io/f/xvzvkqzv" method="POST" class="glass-form">
-    <div class="form-group">
-        <input type="text" name="name" class="glass-input" placeholder="Your Name" required>
-    </div>
-    
-    <div class="form-group">
-        <input type="email" name="email" class="glass-input" placeholder="Your Email" required>
-    </div>
-    
-    <div class="form-group">
-        <textarea name="message" class="glass-input" placeholder="Your Message" required></textarea>
-    </div>
-    
-    <button type="submit" class="btn-primary">Send Message</button>
-</form>
-                    <div class="contact-link">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
-                        <span>INDIA, Uttar Pradesh</span>
-                    </div>
+                    <form class="glass-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required class="glass-input">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required class="glass-input">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required
+                                class="glass-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
                 </div>
 
-                <!-- Terminal / Intro Box -->
-                <div class="terminal-box glass-card">
-                    <div class="terminal-header">
-                        <span class="terminal-dot red"></span>
-                        <span class="terminal-dot yellow"></span>
-                        <span class="terminal-dot green"></span>
-                        <span class="terminal-title">surya@portfolio ~ $</span>
+                <!-- Right: Terminal Bio & Socials Wrapper -->
+                <div class="contact-wrapper" style="display: flex; flex-direction: column; gap: 2rem;">
+                    <!-- Terminal / Intro Box -->
+                    <div class="terminal-box glass-card">
+                        <div class="terminal-header">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                            <span class="terminal-title">surya@portfolio ~ $</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p><span class="t-prompt">$</span> whoami</p>
+                            <p class="t-output">Surya — Civil Engineering Student</p>
+                            <p><span class="t-prompt">$</span> cat interests.txt</p>
+                            <p class="t-output">Structural Analysis, AI in Infrastructure, Geospatial Mapping, BIM</p>
+                            <p><span class="t-prompt">$</span> cat mission.txt</p>
+                            <p class="t-output">Building infrastructure with intelligence.</p>
+                        </div>
                     </div>
-                    <div class="terminal-body">
-                        <p><span class="t-prompt">$</span> whoami</p>
-                        <p class="t-output">Surya — Civil Engineering Student</p>
-                        <p><span class="t-prompt">$</span> cat interests.txt</p>
-                        <p class="t-output">Structural Analysis, AI in Infrastructure, Geospatial Mapping, BIM</p>
-                        <p><span class="t-prompt">$</span> cat mission.txt</p>
-                        <p class="t-output">Building infrastructure with intelligence.</p>
-                        <!-- PLACEHOLDER: Add more terminal lines if you want -->
+
+                    <!-- Social Links -->
+                    <div class="socials-card glass-card"
+                        style="padding: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1rem;">
+                        <a href="https://linkedin.com/in/suryav7" target="_blank" class="contact-link"
+                            rel="noopener noreferrer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/suryav7" target="_blank" class="contact-link"
+                            rel="noopener noreferrer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="#" target="_blank" class="contact-link" rel="noopener noreferrer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" target="_blank" class="contact-link" rel="noopener noreferrer">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                            </svg>
+                            <span>Facebook</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ======================================================
+         ALL CERTIFICATES MODAL — 12-slot gallery grid.
+         First 4 slots are populated; remaining 8 are placeholders.
+    ====================================================== -->
+    <div id="modal-all-certs" class="modal">
+        <div class="modal-inner" style="max-width:960px;">
+            <button class="modal-close" data-close="modal-all-certs">&times;</button>
+            <h2>All Certificates</h2>
+            <p class="modal-org">Professional Development &amp; Training</p>
+            <div class="modal-body">
+                <div class="cert-modal-grid">
+                    <!-- Slot 1 -->
+                    <div class="cert-wrapper">
+                        <img src="Assets/Internship Certificate.png" alt="IIT Roorkee AutoCAD Certificate"
+                            loading="lazy" decoding="async" class="media-fit">
+                        <h4 class="cert-title">AutoCAD Certification</h4>
+                    </div>
+                    <!-- Slot 2 -->
+                    <div class="cert-wrapper">
+                        <img src="Assets/Python Completion.png" alt="IIT Roorkee Quiz Certificate" loading="lazy"
+                            decoding="async" class="media-fit">
+                        <h4 class="cert-title">Quiz Championship</h4>
+                    </div>
+                    <!-- Slot 3 -->
+                    <div class="cert-wrapper">
+                        <img src="Assets/Training Certificate.png" alt="NIT Agartala Certificate" loading="lazy"
+                            decoding="async" class="media-fit">
+                        <h4 class="cert-title">NIT Agartala Event</h4>
+                    </div>
+                    <div class="cert-wrapper">
+                        <img src="Assets/Internship Certificate.png" alt="VVM Certificate" loading="lazy"
+                            decoding="async" class="media-fit">
+                        <h4 class="cert-title">VVM Certificate</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_5.png" alt="Certificate 5 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 5 Title</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_6.png" alt="Certificate 6 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 6 Title</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_7.png" alt="Certificate 7 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 7 Title</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_8.png" alt="Certificate 8 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 8 Title</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_9.png" alt="Certificate 9 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 9 Title</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_10.png" alt="Certificate 10 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 10 Title</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_11.png" alt="Certificate 11 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 11 Title</h4>
+                    </div>
+
+                    <div class="cert-wrapper">
+                        <img src="Assets/Your_Cert_12.png" alt="Certificate 12 Name" loading="lazy" decoding="async"
+                            class="media-fit">
+                        <h4 class="cert-title">Certificate 12 Title</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <footer class="footer">
         <p>&copy; 2026 Surya. Engineered with precision.</p>
