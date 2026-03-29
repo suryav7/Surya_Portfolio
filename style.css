@@ -1356,3 +1356,53 @@ html {
     height: 280px;
   }
 }
+
+/* -------------------------------------------------------
+   GLASSMORPHISM CONTACT FORM — Transparent inputs with
+   glass borders and cyan focus glow.
+   ------------------------------------------------------- */
+.glass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.glass-input {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.glass-input::placeholder {
+  color: var(--white-dim);
+  font-size: 0.85rem;
+}
+
+.glass-input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.15);
+}
+
+textarea.glass-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.glass-form .btn-primary {
+  align-self: flex-start;
+  margin-top: 0.3rem;
+}
