@@ -42,6 +42,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100vw;
+  max-width: 100%;
 }
 
 body {
@@ -50,6 +53,8 @@ body {
   color: var(--white);
   line-height: 1.7;
   overflow-x: hidden;
+  width: 100vw;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -93,6 +98,7 @@ html {
 .section {
   padding: 6rem 0;
   position: relative;
+  overflow-x: hidden;
 }
 
 .section-title {
@@ -115,6 +121,7 @@ html {
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  will-change: transform, opacity;
 }
 
 .glass-card:hover {
@@ -1024,7 +1031,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 2rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* Left panel — flex column keeps heading, specs, and button
@@ -1033,7 +1040,8 @@ html {
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  height: 100%;
+  justify-content: space-between;
 }
 
 .analysis-details h3 {
@@ -1087,7 +1095,8 @@ html {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  height: 100%;
+  justify-content: space-between;
   overflow: hidden;
 }
 
@@ -1148,7 +1157,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .contact-links {
@@ -1268,6 +1277,7 @@ html {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
+  will-change: transform, opacity;
 }
 
 
@@ -1356,6 +1366,107 @@ html {
     height: 280px;
   }
 }
+
+
+/* -------------------------------------------------------
+   WEBGL PRELOADER — Full-screen overlay with glowing logo.
+   Fades out via JS after Three.js scene constructs.
+   ------------------------------------------------------- */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.preloader-logo {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow:
+    0 0 20px var(--cyan-glow),
+    0 0 40px var(--cyan-glow),
+    0 0 80px rgba(6, 182, 212, 0.15);
+  animation: preloaderPulse 1.8s ease-in-out infinite;
+}
+
+.preloader-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  animation: preloaderTextPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes preloaderPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 20px var(--cyan-glow),
+      0 0 40px var(--cyan-glow),
+      0 0 80px rgba(6, 182, 212, 0.15);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow:
+      0 0 30px var(--cyan-glow),
+      0 0 60px var(--cyan-glow),
+      0 0 120px rgba(6, 182, 212, 0.25);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes preloaderTextPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+
+/* -------------------------------------------------------
+   SCROLL PROGRESS BAR — Fixed cyan bar at page top.
+   Width is driven by JS scroll calculation.
+   ------------------------------------------------------- */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan-glow), 0 0 16px rgba(6, 182, 212, 0.15);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+
+/* -------------------------------------------------------
+   CERTIFICATE VIEW-ALL TRIGGER — Styled card button
+   that opens the 12-slot modal.
+   ------------------------------------------------------- */
+.view-more-stack { position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(6, 182, 212, 0.05); min-height: 220px; z-index: 1; overflow: visible; }
+.view-more-stack::before, .view-more-stack::after { content: ''; position: absolute; background: rgba(20, 20, 25, 0.9); border: 1px solid var(--glass-border); border-radius: var(--radius); z-index: -1; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.view-more-stack::before { inset: 5px 15px; transform: rotate(-4deg); }
+.view-more-stack::after { inset: 5px 15px; transform: rotate(4deg); }
+.view-more-stack:hover::before { transform: rotate(-8deg) scale(1.02); }
+.view-more-stack:hover::after { transform: rotate(8deg) scale(1.02); }
+.stack-content { display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none; }
+.stack-icon { font-size: 2.5rem; }
+.stack-content h3 { color: var(--cyan); margin: 0; font-size: 1.2rem; font-weight: 700; }
+.stack-content p { color: var(--white-dim); font-size: 0.85rem; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* --- Modal Grid & Wrapper Styles --- */
+.cert-modal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; padding-top: 1rem; }
+.cert-wrapper { display: flex; flex-direction: column; gap: 0.8rem; text-align: center; background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--glass-border); transition: transform var(--transition), border-color var(--transition); }
+.cert-wrapper:hover { transform: translateY(-4px); border-color: rgba(6, 182, 212, 0.3); }
+.cert-title { font-size: 0.9rem; color: var(--cyan); font-weight: 600; margin: 0; }
+
 
 /* -------------------------------------------------------
    GLASSMORPHISM CONTACT FORM — Transparent inputs with
