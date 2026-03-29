@@ -3,58 +3,99 @@
    Handles: Three.js scenes, GSAP animations, typewriter,
    modal interactions, navbar, and Chenab bridge viewer.
    ========================================================== */
-// --- Custom Terminal Preloader Sequence ---
+
+
+// --- 1. PRELOADER & HERO TYPEWRITER SEQUENCING ---
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     const textEl = document.getElementById('preloader-text');
     
-    // The phrases
+    // HACKER PHRASES
     const phase1 = "> INTERCEPTING SATELLITE RADAR TELEMETRY...";
     const phase2 = " SYNCED.";
     
     let charIndex = 0;
 
-    // Step 1: Type out the first phrase
+    // Type the first phrase
     function typePhase1() {
         if (charIndex < phase1.length) {
             textEl.innerHTML += phase1.charAt(charIndex);
             charIndex++;
-            // Randomize typing speed slightly for realism (between 30ms and 80ms)
             setTimeout(typePhase1, Math.random() * 50 + 30);
         } else {
-            // Pause for suspense, then show GRANTED
             setTimeout(showGranted, 600);
         }
     }
 
-    // Step 2: Flash "GRANTED." in success green
+    // Flash the success message
     function showGranted() {
-        // Adds the text wrapped in a green color span
         textEl.innerHTML += `<span style="color: #22c55e; font-weight: bold;">${phase2}</span>`;
-        
-        // Hold the screen for exactly 1 second so they can read it, then fade out
         setTimeout(hidePreloader, 1000);
     }
 
-    // Step 3: Fade away revealing the 3D bridge
+    // Fade out and TRIGGER THE HERO TEXT
     function hidePreloader() {
         preloader.style.opacity = '0';
-        preloader.style.visibility = 'hidden';
+        setTimeout(() => {
+            preloader.style.visibility = 'hidden';
+            
+            // CRITICAL: Start Hero Typewriter only after preloader is gone
+            startHeroTypewriter(); 
+        }, 800); 
     }
 
-    // Kick off the animation!
-    setTimeout(typePhase1, 400); // Brief delay before typing starts
+    setTimeout(typePhase1, 400); 
 });
-// Wait for all scripts (Three.js, GSAP) to load before init
+
+// --- 2. HERO TYPEWRITER FUNCTION ---
+// Defined outside so the preloader can trigger it
+function startHeroTypewriter() {
+    const lines = [
+        { elementId: 'typewriter-role', text: 'Civil Engineering Student' },
+        { elementId: 'typewriter-tagline', text: 'Building infrastructure with intelligence' }
+    ];
+
+    let lineIndex = 0;
+
+    function typeLine(line, callback) {
+        const el = document.getElementById(line.elementId);
+        if (!el) return;
+        let charIndex = 0;
+        el.textContent = '';
+
+        const interval = setInterval(() => {
+            el.textContent += line.text[charIndex];
+            charIndex++;
+            if (charIndex >= line.text.length) {
+                clearInterval(interval);
+                setTimeout(callback, 600);
+            }
+        }, 55); 
+    }
+
+    function typeAllLines() {
+        if (lineIndex < lines.length) {
+            typeLine(lines[lineIndex], () => {
+                lineIndex++;
+                typeAllLines();
+            });
+        }
+    }
+
+    typeAllLines();
+}
+
+// --- 3. DOM INITIALIZATION ---
 window.addEventListener('DOMContentLoaded', () => {
     initNavbar();
-    // initTypewriter();
+    // initTypewriter() is now triggered by the preloader finish
     initHeroScene();
     initChenabViewer();
     initModals();
     initGSAP();
 });
 
+// Keep your existing initNavbar, initHeroScene, initChenabViewer, etc. functions below this line...
 
 /* -------------------------------------------------------
    1. NAVBAR — Smooth scroll, active link tracking,
