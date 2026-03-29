@@ -4,51 +4,7 @@
    modal interactions, navbar, and Chenab bridge viewer.
    ========================================================== */
 
-
-// --- 1. PRELOADER & HERO TYPEWRITER SEQUENCING ---
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    const textEl = document.getElementById('preloader-text');
-    
-    // HACKER PHRASES
-    const phase1 = "> INTERCEPTING SATELLITE RADAR TELEMETRY...";
-    const phase2 = " SYNCED.";
-    
-    let charIndex = 0;
-
-    // Type the first phrase
-    function typePhase1() {
-        if (charIndex < phase1.length) {
-            textEl.innerHTML += phase1.charAt(charIndex);
-            charIndex++;
-            setTimeout(typePhase1, Math.random() * 50 + 30);
-        } else {
-            setTimeout(showGranted, 600);
-        }
-    }
-
-    // Flash the success message
-    function showGranted() {
-        textEl.innerHTML += `<span style="color: #22c55e; font-weight: bold;">${phase2}</span>`;
-        setTimeout(hidePreloader, 1000);
-    }
-
-    // Fade out and TRIGGER THE HERO TEXT
-    function hidePreloader() {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.visibility = 'hidden';
-            
-            // CRITICAL: Start Hero Typewriter only after preloader is gone
-            startHeroTypewriter(); 
-        }, 800); 
-    }
-
-    setTimeout(typePhase1, 400); 
-});
-
-// --- 2. HERO TYPEWRITER FUNCTION ---
-// Defined outside so the preloader can trigger it
+// --- 1. HERO TYPEWRITER FUNCTION (Defined first so it's ready) ---
 function startHeroTypewriter() {
     const lines = [
         { elementId: 'typewriter-role', text: 'Civil Engineering Student' },
@@ -85,16 +41,56 @@ function startHeroTypewriter() {
     typeAllLines();
 }
 
+// --- 2. PRELOADER & SEQUENCING ---
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    const textEl = document.getElementById('preloader-text');
+    
+    const phase1 = "> INTERCEPTING SATELLITE RADAR TELEMETRY...";
+    const phase2 = " SYNCED.";
+    
+    let charIndex = 0;
+
+    function typePhase1() {
+        if (textEl && charIndex < phase1.length) {
+            textEl.innerHTML += phase1.charAt(charIndex);
+            charIndex++;
+            setTimeout(typePhase1, Math.random() * 50 + 30);
+        } else {
+            setTimeout(showGranted, 600);
+        }
+    }
+
+    function showGranted() {
+        if (textEl) {
+            textEl.innerHTML += `<span style="color: #22c55e; font-weight: bold;">${phase2}</span>`;
+        }
+        setTimeout(hidePreloader, 1000);
+    }
+
+    function hidePreloader() {
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.visibility = 'hidden';
+                // Trigger Hero Text
+                startHeroTypewriter(); 
+            }, 800); 
+        }
+    }
+
+    // Start Preloader Typing
+    if (textEl) setTimeout(typePhase1, 400); 
+});
+
 // --- 3. DOM INITIALIZATION ---
 window.addEventListener('DOMContentLoaded', () => {
     initNavbar();
-    // initTypewriter() is now triggered by the preloader finish
     initHeroScene();
     initChenabViewer();
     initModals();
     initGSAP();
 });
-
 // Keep your existing initNavbar, initHeroScene, initChenabViewer, etc. functions below this line...
 
 /* -------------------------------------------------------
