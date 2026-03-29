@@ -9,8 +9,8 @@ window.addEventListener('load', () => {
     const textEl = document.getElementById('preloader-text');
     
     // The phrases
-    const phase1 = "> EXECUTING FINITE_ELEMENTS_ANALYSIS.EXE...";
-    const phase2 = " SYSTEM STABLE.";
+    const phase1 = "> INTERCEPTING SATELLITE RADAR TELEMETRY...";
+    const phase2 = " SYNCED.";
     
     let charIndex = 0;
 
@@ -43,12 +43,12 @@ window.addEventListener('load', () => {
     }
 
     // Kick off the animation!
-    setTimeout(typePhase1, 300); // Brief delay before typing starts
+    setTimeout(typePhase1, 400); // Brief delay before typing starts
 });
 // Wait for all scripts (Three.js, GSAP) to load before init
 window.addEventListener('DOMContentLoaded', () => {
     initNavbar();
-    initTypewriter();
+    // initTypewriter();
     initHeroScene();
     initChenabViewer();
     initModals();
