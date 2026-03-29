@@ -56,11 +56,15 @@
          WEBGL PRELOADER — Full-screen loading overlay with
          glowing 'S' logo. Fades out after Three.js constructs.
     ====================================================== -->
-    <div id="preloader">
-        <div class="preloader-logo">S</div>
-        <p class="preloader-text">INITIALIZING WEBGL ENVIRONMENT...</p>
+    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh; z-index: 99999; background: var(--bg-primary); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease;">
+    <div class="hero-photo" style="width: 90px; height: 90px; margin-bottom: 1.5rem;">
+        <span class="hero-logo-letter" style="font-size: 1.8rem;">S</span>
     </div>
-
+    <p style="color: var(--cyan); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; animation: pulse 1.5s infinite;">Initializing WebGL Environment...</p>
+</div>
+<style>
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+</style>
     <!-- ======================================================
          SCROLL PROGRESS BAR — Fixed at top, grows with scroll.
     ====================================================== -->
