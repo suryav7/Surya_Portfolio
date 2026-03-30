@@ -46,9 +46,9 @@ window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     const textEl = document.getElementById('preloader-text');
     
-    const phase1 = ">surya@portfolio:~$ run setup_infrastructure.sh";
-    const phase2 = "DEPLOYMENT SUCCESSFUL.";
-    
+    // Change these two lines in your app.js
+const phase1 = "surya@portfolio:~$ ./setup_infrastructure.sh";
+const phase2 = " SUCCESSFUL...";
     let charIndex = 0;
 
     function typePhase1() {
@@ -61,13 +61,11 @@ window.addEventListener('load', () => {
         }
     }
 
-    function showGranted() {
-        if (textEl) {
-            textEl.innerHTML += `<span style="color: #22c55e; font-weight: bold;">${phase2}</span>`;
-        }
-        setTimeout(hidePreloader, 1000);
-    }
-
+   function showGranted() {
+    // We use a slightly dimmer color for the "done" message to look like real logs
+    textEl.innerHTML += `<span style="color: #a8a8a8; font-weight: normal;">${phase2}</span>`;
+    setTimeout(hidePreloader, 1000);
+}
     function hidePreloader() {
         if (preloader) {
             preloader.style.opacity = '0';
