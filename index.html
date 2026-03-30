@@ -67,10 +67,17 @@
         </p>
     </div>
 </div>
-<style>
-    .blink-cursor { animation: blink 0.8s step-end infinite; font-weight: bold; }
-    @keyframes blink { 50% { opacity: 0; } }
-</style>
+<p style="
+    color: var(--cyan); 
+    font-family: 'Courier New', monospace; /* Authentic terminal font */
+    font-size: 0.9rem; 
+    letter-spacing: 0.05em; 
+    text-transform: none; /* THIS STOPS THE CAPITAL LETTERS */
+    font-weight: 400; /* THIS STOPS THE BOLD */
+    opacity: 0.9;
+">
+    <span id="preloader-text"></span><span class="blink-cursor">_</span>
+</p>
     <!-- ======================================================
          SCROLL PROGRESS BAR — Fixed at top, grows with scroll.
     ====================================================== -->
