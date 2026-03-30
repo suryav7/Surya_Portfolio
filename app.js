@@ -63,9 +63,9 @@ window.addEventListener('load', () => {
             // APPLYING RED COLOR + FORCING LOWERCASE INLINE
             textEl.innerHTML = `<span style="color: #ff4d4d !important; text-transform: none !important; display: inline-block;">${phase1.substring(0, charIndex + 1)}</span>`;
             charIndex++;
-            setTimeout(typePhase1, Math.random() * 30 + 20);
+            setTimeout(typePhase1, Math.random() * 50 + 20);
         } else {
-            setTimeout(showGranted, 300);
+            setTimeout(showGranted, 600);
         }
     }
 
@@ -74,7 +74,7 @@ window.addEventListener('load', () => {
         textEl.innerHTML = `<span style="color: #ff4d4d !important; text-transform: none !important; display: inline-block;">${phase1}</span>` + 
                            `<span style="color: #22c55e !important; font-weight: bold !important; text-transform: none !important; display: inline-block;">${phase2}</span>`;
         
-        setTimeout(hidePreloader, 600);
+        setTimeout(hidePreloader, 1000);
     }
 
     function hidePreloader() {
@@ -84,10 +84,10 @@ window.addEventListener('load', () => {
             if (typeof startHeroTypewriter === 'function') {
                 startHeroTypewriter();
             }
-        }, 500);
+        }, 800);
     }
 
-    setTimeout(typePhase1, 200); 
+    setTimeout(typePhase1, 400); 
 });
 
 // --- 3. DOM INITIALIZATION ---
