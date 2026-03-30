@@ -46,24 +46,29 @@ window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     const textEl = document.getElementById('preloader-text');
     
-    // Change these two lines in your app.js
+// Inside your preloader window.addEventListener('load', ...)
+
 const phase1 = "surya@portfolio:~$ ./setup_infrastructure.sh";
-const phase2 = " SUCCESSFUL...";
-    let charIndex = 0;
+const phase2 = " done. system_ready.";
 
-    function typePhase1() {
-        if (textEl && charIndex < phase1.length) {
-            textEl.innerHTML += phase1.charAt(charIndex);
-            charIndex++;
-            setTimeout(typePhase1, Math.random() * 50 + 30);
-        } else {
-            setTimeout(showGranted, 600);
-        }
+// Step 1: Type Phase 1 in RED
+function typePhase1() {
+    if (charIndex < phase1.length) {
+        // We wrap the text in a red span here
+        textEl.innerHTML = `<span style="color: #ff4d4d;">${phase1.substring(0, charIndex + 1)}</span>`;
+        charIndex++;
+        setTimeout(typePhase1, Math.random() * 50 + 30);
+    } else {
+        setTimeout(showGranted, 600);
     }
+}
 
-   function showGranted() {
-    // We use a slightly dimmer color for the "done" message to look like real logs
-    textEl.innerHTML += `<span style="color: #a8a8a8; font-weight: normal;">${phase2}</span>`;
+// Step 2: Add Phase 2 in GREEN
+function showGranted() {
+    // Keep Phase 1 Red and append Phase 2 in Green
+    textEl.innerHTML = `<span style="color: #ff4d4d;">${phase1}</span>` + 
+                       `<span style="color: #22c55e; font-weight: bold;">${phase2}</span>`;
+    
     setTimeout(hidePreloader, 1000);
 }
     function hidePreloader() {
