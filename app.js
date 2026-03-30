@@ -46,8 +46,8 @@ window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     const textEl = document.getElementById('preloader-text');
     
-    const phase1 = "> INTERCEPTING SATELLITE RADAR TELEMETRY...";
-    const phase2 = " SYNCED.";
+    const phase1 = ">surya@portfolio:~$ run setup_infrastructure.sh";
+    const phase2 = "DEPLOYMENT SUCCESSFUL.";
     
     let charIndex = 0;
 
