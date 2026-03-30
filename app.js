@@ -42,48 +42,52 @@ function startHeroTypewriter() {
 }
 
 // --- 2. PRELOADER & SEQUENCING ---
+// --- Custom Terminal Preloader Sequence ---
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     const textEl = document.getElementById('preloader-text');
     
-// Inside your preloader window.addEventListener('load', ...)
-
-const phase1 = "surya@portfolio:~$ ./setup_infrastructure.sh";
-const phase2 = " done. system_ready.";
-
-// Step 1: Type Phase 1 in RED
-function typePhase1() {
-    if (charIndex < phase1.length) {
-        // We wrap the text in a red span here
-        textEl.innerHTML = `<span style="color: #ff4d4d;">${phase1.substring(0, charIndex + 1)}</span>`;
-        charIndex++;
-        setTimeout(typePhase1, Math.random() * 50 + 30);
-    } else {
-        setTimeout(showGranted, 600);
+    // FORCE CSS RESET VIA JS (This kills the Capital Letters issue)
+    if (textEl) {
+        textEl.style.textTransform = "none";
+        textEl.style.color = "inherit";
     }
-}
 
-// Step 2: Add Phase 2 in GREEN
-function showGranted() {
-    // Keep Phase 1 Red and append Phase 2 in Green
-    textEl.innerHTML = `<span style="color: #ff4d4d;">${phase1}</span>` + 
-                       `<span style="color: #22c55e; font-weight: bold;">${phase2}</span>`;
+    const phase1 = "surya@portfolio:~$ ./setup_infrastructure.sh";
+    const phase2 = " done. system_ready.";
     
-    setTimeout(hidePreloader, 1000);
-}
-    function hidePreloader() {
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.visibility = 'hidden';
-                // Trigger Hero Text
-                startHeroTypewriter(); 
-            }, 800); 
+    let charIndex = 0;
+
+    function typePhase1() {
+        if (charIndex < phase1.length) {
+            // APPLYING RED COLOR + FORCING LOWERCASE INLINE
+            textEl.innerHTML = `<span style="color: #ff4d4d !important; text-transform: none !important; display: inline-block;">${phase1.substring(0, charIndex + 1)}</span>`;
+            charIndex++;
+            setTimeout(typePhase1, Math.random() * 30 + 20);
+        } else {
+            setTimeout(showGranted, 300);
         }
     }
 
-    // Start Preloader Typing
-    if (textEl) setTimeout(typePhase1, 400); 
+    function showGranted() {
+        // APPLYING RED FOR PHASE 1 + GREEN FOR PHASE 2 + FORCING LOWERCASE
+        textEl.innerHTML = `<span style="color: #ff4d4d !important; text-transform: none !important; display: inline-block;">${phase1}</span>` + 
+                           `<span style="color: #22c55e !important; font-weight: bold !important; text-transform: none !important; display: inline-block;">${phase2}</span>`;
+        
+        setTimeout(hidePreloader, 600);
+    }
+
+    function hidePreloader() {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.visibility = 'hidden';
+            if (typeof startHeroTypewriter === 'function') {
+                startHeroTypewriter();
+            }
+        }, 500);
+    }
+
+    setTimeout(typePhase1, 200); 
 });
 
 // --- 3. DOM INITIALIZATION ---
